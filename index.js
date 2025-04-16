@@ -5,11 +5,12 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// Substitua pelas suas chaves da Nexus Tech
+// Suas chaves da Nexus Tech
 const PUBLIC_KEY = 'pk_live_FUF01RbBgi0V4BXctjUyLEcqFIDs3d';
 const SECRET_KEY = 'sk_live_n2DcGrRa4ZpxPmtf3QAHszDhCeT2iYj6J7rs6LwawK';
 const NEXUS_API_URL = 'https://api.nexustech.com.br/pix';
 
+// ✅ Rota POST para gerar Pix
 app.post('/pix', async (req, res) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || authHeader !== `Bearer ${SECRET_KEY}`) {
@@ -41,10 +42,12 @@ app.post('/pix', async (req, res) => {
   }
 });
 
+// 🔎 Rota GET básica para testar o servidor
 app.get('/', (req, res) => {
   res.send('API Pix em execução!');
 });
 
+// 🚀 Inicia o servidor
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
