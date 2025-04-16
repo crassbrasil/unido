@@ -8,7 +8,7 @@ app.use(express.json());
 // Suas chaves da Nexus Tech
 const PUBLIC_KEY = 'pk_live_FUF01RbBgi0V4BXctjUyLEcqFIDs3d';
 const SECRET_KEY = 'sk_live_n2DcGrRa4ZpxPmtf3QAHszDhCeT2iYj6J7rs6LwawK';
-const NEXUS_API_URL = 'https://primary-production-49ab.up.railway.app/pix';
+const NEXUS_API_URL = 'https://api.nexustech.com.br/pix';
 
 // ✅ Rota POST para gerar Pix
 app.post('/pix', async (req, res) => {
