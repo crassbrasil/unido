@@ -16,12 +16,8 @@ const NEXUS_API_URL = 'https://api.nexustech.com.br/pix';
 
 // Rota POST para gerar Pix
 app.post('/pix', async (req, res) => {
-  const authHeader = req.headers.authorization;
-  if (!authHeader || authHeader !== `Bearer ${SECRET_KEY}`) {
-    return res.status(401).json({ error: 'Não autorizado' });
-  }
-
   const { amount } = req.body;
+
   if (!amount || amount <= 0) {
     return res.status(400).json({ error: 'Valor inválido para o Pix.' });
   }
@@ -37,6 +33,7 @@ app.post('/pix', async (req, res) => {
         }
       }
     );
+
     res.json(response.data);
   } catch (error) {
     res.status(500).json({
